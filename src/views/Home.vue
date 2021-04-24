@@ -1,18 +1,31 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <h2>rate val is : {{ data.value }}</h2>
+    <!-- <Rate :value="data.value" @change="changeRateVal" /> -->
+    <!-- change to v-model -->
+    <Rate v-model="data.value" />
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-
+import { reactive } from "vue";
+import Rate from "@/components/Rate";
 export default {
-  name: 'Home',
-  components: {
-    HelloWorld
-  }
-}
+  name: "Home",
+  components: { Rate },
+  setup() {
+    let data = reactive({
+      value: 5,
+    });
+    //这样外部还要带一个方法 不方便 所以直接去掉
+    // const changeRateVal = (val) => {
+    //   console.log(val);
+    //   //reactive的可以直接赋值修改
+    //   data.value = val;
+    // };
+    return {
+      data,
+    };
+  },
+};
 </script>
