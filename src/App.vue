@@ -2,4 +2,8 @@
   <router-view />
 </template>
 
-<style></style>
+<style>
+#app {
+  height: 100vh;
+}
+</style>
